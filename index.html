@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Louis Scarfone - Entrepreneur & Développeur Full Stack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --accent: #ff006e;
+            --dark: #0d1b2a;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient-shift 8s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-size: 200% 200%;
+            animation: gradient-shift 8s ease infinite;
+        }
+        
+        .hero-shape {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.2), rgba(131, 56, 236, 0.2));
+            clip-path: polygon(100% 0, 0% 0, 100% 100%);
+            z-index: -1;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-delay-1 {
+            animation-delay: 1s;
+        }
+        
+        .floating-delay-2 {
+            animation-delay: 2s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            left: -10px;
+            top: 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-size: 200% 200%;
+            animation: gradient-shift 8s ease infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card {
+            overflow: hidden;
+        }
+        
+        .project-card img {
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .skill-progress {
+            height: 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .skill-progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-size: 200% 200%;
+            animation: gradient-shift 8s ease infinite;
+            transition: width 1.5s ease;
+        }
+        
+        .cursor-glow {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(58, 134, 255, 0.3) 0%, rgba(131, 56, 236, 0.1) 50%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+    </style>
+    <meta name="description" content="decouvrez mon travail">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <div class="cursor-glow" id="cursor-glow"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white bg-opacity-90 backdrop-blur-md z-50 shadow-md">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">LS</span>
+                    <span class="ml-2 text-xl font-semibold">Louis Scarfone</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#accueil" class="nav-link font-medium text-gray-700 hover:text-gray-900">Accueil</a>
+                    <a href="#a-propos" class="nav-link font-medium text-gray-700 hover:text-gray-900">À propos</a>
+                    <a href="#parcours" class="nav-link font-medium text-gray-700 hover:text-gray-900">Parcours</a>
+                    <a href="#competences" class="nav-link font-medium text-gray-700 hover:text-gray-900">Compétences</a>
+                    <a href="#projets" class="nav-link font-medium text-gray-700 hover:text-gray-900">Projets</a>
+                    <a href="#temoignages" class="nav-link font-medium text-gray-700 hover:text-gray-900">Témoignages</a>
+                    <a href="#contact" class="nav-link font-medium text-gray-700 hover:text-gray-900">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+                <a href="#accueil" class="block py-2 text-gray-700 hover:text-gray-900">Accueil</a>
+                <a href="#a-propos" class="block py-2 text-gray-700 hover:text-gray-900">À propos</a>
+                <a href="#parcours" class="block py-2 text-gray-700 hover:text-gray-900">Parcours</a>
+                <a href="#competences" class="block py-2 text-gray-700 hover:text-gray-900">Compétences</a>
+                <a href="#projets" class="block py-2 text-gray-700 hover:text-gray-900">Projets</a>
+                <a href="#temoignages" class="block py-2 text-gray-700 hover:text-gray-900">Témoignages</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-gray-900">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="hero-shape"></div>
+        <div class="container mx-auto px-6 py-12 md:py-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 z-10">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        Bonjour, je suis <span class="gradient-text">Louis Scarfone</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700">Entrepreneur &amp; Développeur Full Stack</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        De l'archéologie à l'intelligence artificielle, j'ai transformé ma passion pour la découverte en une expertise en développement web et IA. Fondateur de <span class="font-bold gradient-text">Codyz.ia</span>, je crée des sites web innovants propulsés par l'intelligence artificielle.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#projets" class="btn-primary text-white font-bold py-3 px-8 rounded-full text-center">
+                            Découvrir mes projets
+                        </a>
+                        <a href="#contact" class="bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-700 font-bold py-3 px-8 rounded-full transition duration-300 text-center">
+                            Me contacter
+                        </a>
+                    </div>
+                    <div class="mt-12 flex space-x-6">
+                        <a href="#" class="text-gray-600 hover:text-gray-900 transition duration-300">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-900 transition duration-300">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-900 transition duration-300">
+                            <i class="fab fa-twitter text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-900 transition duration-300">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center relative z-10">
+                    <div class="relative">
+                        <div class="absolute -top-6 -left-6 w-64 h-64 bg-blue-100 rounded-full opacity-70 floating"></div>
+                        <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-purple-100 rounded-full opacity-70 floating floating-delay-1"></div>
+                        <img src="https://fakeimg.pl/500x500" alt="Louis Scarfone" class="w-80 h-80 md:w-96 md:h-96 object-cover rounded-full border-4 border-white shadow-xl z-10 relative">
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-10 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center card-hover p-6 bg-white rounded-xl shadow-md">
+                    <div class="text-4xl font-bold gradient-text">10+</div>
+                    <div class="text-gray-600 mt-2">Projets réalisés</div>
+                </div>
+                <div class="text-center card-hover p-6 bg-white rounded-xl shadow-md">
+                    <div class="text-4xl font-bold gradient-text">5+</div>
+                    <div class="text-gray-600 mt-2">Années d'expérience</div>
+                </div>
+                <div class="text-center card-hover p-6 bg-white rounded-xl shadow-md">
+                    <div class="text-4xl font-bold gradient-text">50+</div>
+                    <div class="text-gray-600 mt-2">Clients satisfaits</div>
+                </div>
+                <div class="text-center card-hover p-6 bg-white rounded-xl shadow-md">
+                    <div class="text-4xl font-bold gradient-text">1</div>
+                    <div class="text-gray-600 mt-2">Startup innovante</div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#a-propos" class="text-gray-400 hover:text-gray-600">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- À propos Section -->
+    <section id="a-propos" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">À <span class="gradient-text">Propos</span> de Moi</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-2/5 mb-10 md:mb-0">
+                    <div class="relative">
+                        <img src="https://fakeimg.pl/600x800" alt="Louis Scarfone" class="rounded-lg shadow-2xl max-w-full h-auto">
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg transform rotate-6"></div>
+                        <div class="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg transform -rotate-12"></div>
+                    </div>
+                </div>
+                
+                <div class="md:w-3/5 md:pl-16">
+                    <h3 class="text-2xl font-bold mb-6">Un parcours atypique, une passion pour l'innovation</h3>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Mon parcours professionnel a débuté dans un domaine inattendu : l'archéologie. Passionné par la découverte et l'exploration du passé, j'ai développé une méthodologie rigoureuse et une capacité d'analyse qui me servent encore aujourd'hui.
+                    </p>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Fasciné par les nouvelles technologies et leurs potentiels, j'ai entrepris une reconversion professionnelle vers le développement web et l'intelligence artificielle. Cette transition m'a permis de combiner ma rigueur scientifique avec ma créativité pour concevoir des solutions numériques innovantes.
+                    </p>
+                    
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Aujourd'hui, en tant que fondateur de <span class="font-bold gradient-text">Codyz.ia</span>, je mets mon expertise au service des entreprises qui souhaitent se démarquer grâce à des sites web intelligents et personnalisés. Ma mission est de démocratiser l'accès aux technologies d'IA pour la création web.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Nom :</h4>
+                            <p class="text-gray-600">Louis Scarfone</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Email :</h4>
+                            <p class="text-gray-600">contact@louisscarfone.fr</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Localisation :</h4>
+                            <p class="text-gray-600">Paris, France</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Disponibilité :</h4>
+                            <p class="text-gray-600">Projets sélectifs</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn-primary text-white font-bold py-3 px-8 rounded-full inline-block">
+                        Discutons de votre projet
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-24">
+                <h3 class="text-2xl font-bold text-center mb-12">Mes <span class="gradient-text">Services</span></h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="service-card bg-white p-8 rounded-xl shadow-lg card-hover">
+                        <div class="service-icon mb-6">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Développement Web Full Stack</h4>
+                        <p class="text-gray-600">
+                            Création de sites web et applications sur mesure avec les dernières technologies front-end et back-end pour une expérience utilisateur optimale.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card bg-white p-8 rounded-xl shadow-lg card-hover">
+                        <div class="service-icon mb-6">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Solutions IA</h4>
+                        <p class="text-gray-600">
+                            Intégration de l'intelligence artificielle dans vos projets web pour automatiser les tâches, personnaliser l'expérience utilisateur et analyser les données.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card bg-white p-8 rounded-xl shadow-lg card-hover">
+                        <div class="service-icon mb-6">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Conseil &amp; Formation</h4>
+                        <p class="text-gray-600">
+                            Accompagnement stratégique et formation pour aider votre équipe à maîtriser les technologies web modernes et l'intégration de l'IA.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parcours Section -->
+    <section id="parcours" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Mon <span class="gradient-text">Parcours</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 mt-6 max-w-3xl mx-auto">
+                    De l'archéologie au développement web et à l'intelligence artificielle, découvrez les étapes clés de mon parcours professionnel et académique.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 pr-0 md:pr-12">
+                    <h3 class="text-2xl font-bold mb-8 gradient-text">Formation</h3>
+                    
+                    <div class="relative pl-10 mb-12">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold mb-2">Master en Intelligence Artificielle</h4>
+                            <p class="text-gray-500 mb-3">École d'Ingénierie Numérique, Paris • 2021-2023</p>
+                            <p class="text-gray-600">
+                                Spécialisation en traitement du langage naturel et apprentissage automatique appliqués au développement web.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative pl-10 mb-12">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold mb-2">Formation Développeur Full Stack</h4>
+                            <p class="text-gray-500 mb-3">École du Numérique, Lyon • 2019-2020</p>
+                            <p class="text-gray-600">
+                                Formation intensive aux technologies web modernes : JavaScript, React, Node.js, et bases de données.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative pl-10">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold mb-2">Doctorat en Archéologie</h4>
+                            <p class="text-gray-500 mb-3">Université de la Sorbonne, Paris • 2012-2016</p>
+                            <p class="text-gray-600">
+                                Recherche sur les civilisations méditerranéennes antiques, avec utilisation de technologies numériques pour l'analyse de données archéologiques.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 pl-0 md:pl-12 mt-12 md:mt-0">
+                    <h3 class="text-2xl font-bold mb-8 gradient-text">Expérience Professionnelle</h3>
+                    
+                    <div class="relative pl-10 mb-12">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold mb-2">Fondateur &amp; CEO - Codyz.ia</h4>
+                            <p class="text-gray-500 mb-3">Paris • 2023 - Présent</p>
+                            <p class="text-gray-600">
+                                Création et développement d'une plateforme innovante de génération de sites web par intelligence artificielle. Direction d'une équipe de développeurs et chercheurs en IA.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative pl-10 mb-12">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold mb-2">Développeur Full Stack Senior</h4>
+                            <p class="text-gray-500 mb-3">TechInnovate, Paris • 2020 - 2023</p>
+                            <p class="text-gray-600">
+                                Conception et développement d'applications web complexes pour des clients internationaux. Intégration de solutions d'IA dans des projets web existants.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative pl-10">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold mb-2">Archéologue &amp; Chercheur</h4>
+                            <p class="text-gray-500 mb-3">Centre National de Recherche Archéologique • 2016 - 2019</p>
+                            <p class="text-gray-600">
+                                Direction de fouilles archéologiques et analyse de données. Développement d'outils numériques pour la visualisation de données archéologiques.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences Section -->
+    <section id="competences" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Mes <span class="gradient-text">Compétences</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 mt-6 max-w-3xl mx-auto">
+                    Un éventail de compétences techniques et professionnelles acquises au cours de mon parcours diversifié.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Compétences Techniques</h3>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">Développement Front-end (HTML, CSS, JavaScript)</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">React &amp; Vue.js</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">Node.js &amp; Express</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">Python &amp; Frameworks IA</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">Bases de données (SQL &amp; NoSQL)</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">DevOps &amp; Cloud (AWS, Docker)</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Compétences Professionnelles</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                            <div class="text-4xl text-blue-500 mb-4">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Gestion d'équipe</h4>
+                            <p class="text-gray-600">
+                                Direction d'équipes pluridisciplinaires dans des environnements complexes et innovants.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                            <div class="text-4xl text-purple-500 mb-4">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Gestion de projet</h4>
+                            <p class="text-gray-600">
+                                Méthodologies agiles, planification stratégique et suivi de projets techniques.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                            <div class="text-4xl text-pink-500 mb-4">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Résolution de problèmes</h4>
+                            <p class="text-gray-600">
+                                Approche analytique et créative pour résoudre des défis techniques complexes.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                            <div class="text-4xl text-blue-500 mb-4">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Communication</h4>
+                            <p class="text-gray-600">
+                                Capacité à vulgariser des concepts techniques et à présenter des idées clairement.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h3 class="text-2xl font-bold mb-6">Langues</h3>
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Français</span>
+                                    <span>Natif</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Anglais</span>
+                                    <span>Courant</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Espagnol</span>
+                                    <span>Intermédiaire</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Italien</span>
+                                    <span>Notions</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets Section -->
+    <section id="projets" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Mes <span class="gradient-text">Projets</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 mt-6 max-w-3xl mx-auto">
+                    Découvrez une sélection de projets innovants que j'ai réalisés, alliant technologie et créativité.
+                </p>
+            </div>
+            
+            <div class="mb-12">
+                <div class="flex justify-center mb-8">
+                    <button class="mx-2 px-6 py-2 rounded-full bg-blue-100 text-blue-600 font-medium hover:bg-blue-200 transition duration-300 focus:outline-none active">Tous</button>
+                    <button class="mx-2 px-6 py-2 rounded-full bg-gray-100 text-gray-600 font-medium hover:bg-blue-100 hover:text-blue-600 transition duration-300 focus:outline-none">Web</button>
+                    <button class="mx-2 px-6 py-2 rounded-full bg-gray-100 text-gray-600 font-medium hover:bg-blue-100 hover:text-blue-600 transition duration-300 focus:outline-none">IA</button>
+                    <button class="mx-2 px-6 py-2 rounded-full bg-gray-100 text-gray-600 font-medium hover:bg-blue-100 hover:text-blue-600 transition duration-300 focus:outline-none">Mobile</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projet Codyz.ia -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://fakeimg.pl/600x400" alt="Codyz.ia" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <span class="bg-blue-500 text-xs font-bold px-3 py-1 rounded-full">IA</span>
+                            <span class="bg-purple-500 text-xs font-bold px-3 py-1 rounded-full ml-2">Web</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Codyz.ia - Plateforme de création web par IA</h3>
+                        <p class="text-gray-600 mb-4">
+                            Plateforme innovante permettant de générer des sites web personnalisés grâce à l'intelligence artificielle. Interface intuitive et résultats professionnels.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-blue-500 font-medium hover:text-blue-700 transition duration-300">
+                                Voir le projet <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                            <div class="flex space-x-2">
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-react"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-node-js"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-python"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet ArcheoViz -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://fakeimg.pl/600x400" alt="ArcheoViz" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <span class="bg-green-500 text-xs font-bold px-3 py-1 rounded-full">3D</span>
+                            <span class="bg-yellow-500 text-xs font-bold px-3 py-1 rounded-full ml-2">Visualisation</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">ArcheoViz - Visualisation 3D de sites archéologiques</h3>
+                        <p class="text-gray-600 mb-4">
+                            Application web permettant la visualisation 3D interactive de sites archéologiques, combinant mes connaissances en archéologie et en développement.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-blue-500 font-medium hover:text-blue-700 transition duration-300">
+                                Voir le projet <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                            <div class="flex space-x-2">
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-js"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-unity"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fas fa-database"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet SmartRetail -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://fakeimg.pl/600x400" alt="SmartRetail" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <span class="bg-red-500 text-xs font-bold px-3 py-1 rounded-full">IA</span>
+                            <span class="bg-indigo-500 text-xs font-bold px-3 py-1 rounded-full ml-2">E-commerce</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">SmartRetail - IA pour le commerce en ligne</h3>
+                        <p class="text-gray-600 mb-4">
+                            Solution d'intelligence artificielle pour personnaliser l'expérience d'achat en ligne. Recommandations produits et optimisation du parcours client.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-blue-500 font-medium hover:text-blue-700 transition duration-300">
+                                Voir le projet <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                            <div class="flex space-x-2">
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-python"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-aws"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet HistoryApp -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://fakeimg.pl/600x400" alt="HistoryApp" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <span class="bg-orange-500 text-xs font-bold px-3 py-1 rounded-full">Mobile</span>
+                            <span class="bg-teal-500 text-xs font-bold px-3 py-1 rounded-full ml-2">Éducation</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">HistoryApp - Application mobile éducative</h3>
+                        <p class="text-gray-600 mb-4">
+                            Application mobile ludique pour découvrir l'histoire à travers des parcours interactifs et des reconstitutions 3D de sites historiques.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-blue-500 font-medium hover:text-blue-700 transition duration-300">
+                                Voir le projet <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                            <div class="flex space-x-2">
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-react"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-android"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-apple"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet DataViz -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://fakeimg.pl/600x400" alt="DataViz" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <span class="bg-blue-500 text-xs font-bold px-3 py-1 rounded-full">Data</span>
+                            <span class="bg-green-500 text-xs font-bold px-3 py-1 rounded-full ml-2">Visualisation</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">DataViz - Plateforme de visualisation de données</h3>
+                        <p class="text-gray-600 mb-4">
+                            Outil web permettant de transformer des données complexes en visualisations interactives et compréhensibles pour faciliter la prise de décision.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-blue-500 font-medium hover:text-blue-700 transition duration-300">
+                                Voir le projet <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                            <div class="flex space-x-2">
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-js"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fas fa-chart-bar"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fas fa-database"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet AIChat -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://fakeimg.pl/600x400" alt="AIChat" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <span class="bg-purple-500 text-xs font-bold px-3 py-1 rounded-full">IA</span>
+                            <span class="bg-pink-500 text-xs font-bold px-3 py-1 rounded-full ml-2">Chatbot</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">AIChat - Assistant conversationnel intelligent</h3>
+                        <p class="text-gray-600 mb-4">
+                            Chatbot avancé utilisant le traitement du langage naturel pour fournir une assistance personnalisée et contextuelle aux utilisateurs.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-blue-500 font-medium hover:text-blue-700 transition duration-300">
+                                Voir le projet <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                            <div class="flex space-x-2">
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-python"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fab fa-node-js"></i>
+                                </span>
+                                <span class="text-gray-400 hover:text-gray-600 transition duration-300">
+                                    <i class="fas fa-robot"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="btn-primary text-white font-bold py-3 px-8 rounded-full inline-block">
+                    Discutons de votre projet
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Codyz.ia Section -->
+    <section class="py-20 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900 to-purple-900 opacity-90"></div>
+            <div class="absolute top-0 left-0 w-full h-full" style="background-image: url('https://fakeimg.pl/1920x1080'); background-size: cover; background-position: center; opacity: 0.1;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">
+                    <span class="gradient-text">Codyz.ia</span> - Ma Startup
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
+                <p class="text-gray-300 mt-6 max-w-3xl mx-auto">
+                    Découvrez comment Codyz.ia révolutionne la création de sites web grâce à l'intelligence artificielle.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <div class="relative">
+                        <div class="absolute -top-6 -left-6 w-64 h-64 bg-blue-500 rounded-full opacity-20 floating"></div>
+                        <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-purple-500 rounded-full opacity-20 floating floating-delay-1"></div>
+                        <img src="https://fakeimg.pl/600x400" alt="Codyz.ia Platform" class="rounded-lg shadow-2xl relative z-10">
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-16">
+                    <h3 class="text-2xl font-bold mb-6">La création web réinventée par l'IA</h3>
+                    
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Codyz.ia est née de ma vision de démocratiser la création de sites web professionnels. Notre plateforme utilise des algorithmes d'intelligence artificielle avancés pour générer des sites web entièrement personnalisés à partir de simples descriptions textuelles.
+                    </p>
+                    
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        Notre technologie comprend les besoins spécifiques de chaque client et traduit ces exigences en un design web optimal, en tenant compte des meilleures pratiques en matière d'expérience utilisateur, d'accessibilité et de référencement.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="text-blue-400 mr-4">
+                                <i class="fas fa-rocket text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Rapide &amp; Efficace</h4>
+                                <p class="text-gray-400">Création de sites web en quelques minutes au lieu de semaines.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-blue-400 mr-4">
+                                <i class="fas fa-paint-brush text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Designs Uniques</h4>
+                                <p class="text-gray-400">Chaque site est conçu sur mesure selon vos besoins spécifiques.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-blue-400 mr-4">
+                                <i class="fas fa-code text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Code Optimisé</h4>
+                                <p class="text-gray-400">Sites performants, responsives et conformes aux standards web.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-blue-400 mr-4">
+                                <i class="fas fa-chart-line text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">SEO Intégré</h4>
+                                <p class="text-gray-400">Optimisation pour les moteurs de recherche dès la conception.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://codyz.ia" target="_blank" class="btn-primary text-white font-bold py-3 px-8 rounded-full inline-block">
+                        Découvrir Codyz.ia
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Section -->
+    <section id="temoignages" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Ce que disent mes <span class="gradient-text">Clients</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 mt-6 max-w-3xl mx-auto">
+                    Découvrez les retours d'expérience de clients satisfaits qui ont fait confiance à mes services.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://fakeimg.pl/100x100" alt="Sophie Martin" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Sophie Martin</h4>
+                            <p class="text-gray-500">CEO, TechStart</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Louis a complètement transformé notre présence en ligne avec Codyz.ia. Le processus était incroyablement rapide et le résultat dépasse toutes nos attentes. Notre site est non seulement magnifique, mais il génère également des conversions bien supérieures à notre ancien site."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://fakeimg.pl/100x100" alt="Thomas Dubois" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Thomas Dubois</h4>
+                            <p class="text-gray-500">Directeur Marketing, EcoVert</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "La capacité de Louis à comprendre nos besoins et à les traduire en une solution web innovante est remarquable. Son expertise en IA a apporté une dimension unique à notre projet. Je recommande vivement ses services à toute entreprise cherchant à se démarquer en ligne."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://fakeimg.pl/100x100" alt="Claire Lefèvre" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Claire Lefèvre</h4>
+                            <p class="text-gray-500">Fondatrice, ArtisanWeb</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "En tant que petite entreprise, nous n'avions pas les ressources pour un site web professionnel. Grâce à Louis et Codyz.ia, nous avons maintenant un site qui rivalise avec ceux des grandes entreprises, à une fraction du coût et du temps habituellement nécessaires."
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold">Statistiques de satisfaction</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md">
+                        <div class="text-5xl font-bold gradient-text mb-4">98%</div>
+                        <p class="text-gray-600">Clients satisfaits</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md">
+                        <div class="text-5xl font-bold gradient-text mb-4">50+</div>
+                        <p class="text-gray-600">Projets réalisés</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md">
+                        <div class="text-5xl font-bold gradient-text mb-4">85%</div>
+                        <p class="text-gray-600">Clients récurrents</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md">
+                        <div class="text-5xl font-bold gradient-text mb-4">4.9/5</div>
+                        <p class="text-gray-600">Note moyenne</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100 to-white opacity-90"></div>
+            <div class="absolute top-0 left-0 w-full h-full" style="background-image: url('https://fakeimg.pl/1920x1080'); background-size: cover; background-position: center; opacity: 0.05;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Contactez-<span class="gradient-text">Moi</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 mt-6 max-w-3xl mx-auto">
+                    Vous avez un projet en tête ? N'hésitez pas à me contacter pour en discuter et explorer comment je peux vous aider à le concrétiser.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
+                    <h3 class="text-2xl font-bold mb-6">Discutons de votre projet</h3>
+                    
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Que vous souhaitiez créer un site web innovant, intégrer l'IA dans votre entreprise ou simplement discuter de vos idées, je suis là pour vous aider. Remplissez le formulaire ci-contre ou utilisez les coordonnées ci-dessous pour me contacter.
+                    </p>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-start mb-6">
+                            <div class="text-blue-500 mr-4">
+                                <i class="fas fa-map-marker-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Adresse</h4>
+                                <p class="text-gray-600">75 Avenue des Champs-Élysées, 75008 Paris, France</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="text-blue-500 mr-4">
+                                <i class="fas fa-envelope text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email</h4>
+                                <p class="text-gray-600">contact@louisscarfone.fr</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-blue-500 mr-4">
+                                <i class="fas fa-phone text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Téléphone</h4>
+                                <p class="text-gray-600">+33 6 12 34 56 78</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-600 hover:text-blue-500 transition duration-300">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-900 transition duration-300">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-blue-400 transition duration-300">
+                            <i class="fab fa-twitter text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-red-500 transition duration-300">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nom complet</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300" placeholder="Votre nom">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300" placeholder="Votre email">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Sujet</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300" placeholder="Sujet de votre message">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300" placeholder="Votre message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-primary text-white font-bold py-3 px-8 rounded-lg">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold gradient-text">LS</span>
+                        <span class="ml-2 text-xl font-semibold">Louis Scarfone</span>
+                    </div>
+                    <p class="text-gray-400 mt-2">
+                        Développeur Full Stack &amp; Entrepreneur
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center md:justify-end gap-6">
+                    <a href="#accueil" class="text-gray-400 hover:text-white transition duration-300">Accueil</a>
+                    <a href="#a-propos" class="text-gray-400 hover:text-white transition duration-300">À propos</a>
+                    <a href="#parcours" class="text-gray-400 hover:text-white transition duration-300">Parcours</a>
+                    <a href="#competences" class="text-gray-400 hover:text-white transition duration-300">Compétences</a>
+                    <a href="#projets" class="text-gray-400 hover:text-white transition duration-300">Projets</a>
+                    <a href="#temoignages" class="text-gray-400 hover:text-white transition duration-300">Témoignages</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a>
+                </div>
+            </div>
+            
+            <hr class="border-gray-800 my-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">
+                    © 2025 Louis Scarfone. Tous droits réservés.
+                </p>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Animate skill bars on scroll
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress-bar');
+            
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        }
+        
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'competences') {
+                        animateSkillBars();
+                    }
+                    
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Cursor glow effect
+        const cursorGlow = document.getElementById('cursor-glow');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.opacity = '1';
+            cursorGlow.style.left = `${e.clientX}px`;
+            cursorGlow.style.top = `${e.clientY}px`;
+        });
+        
+        document.addEventListener('mouseleave', () => {
+            cursorGlow.style.opacity = '0';
+        });
+        
+        // Active navigation link based on scroll position
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    const currentId = section.getAttribute('id');
+                    
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('text-blue-600');
+                        
+                        if (link.getAttribute('href') === `#${currentId}`) {
+                            link.classList.add('text-blue-600');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Initialize animations
+        window.addEventListener('load', () => {
+            // Check if we're in the skills section on load
+            const competencesSection = document.getElementById('competences');
+            const rect = competencesSection.getBoundingClientRect();
+            
+            if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                animateSkillBars();
+            }
+        });
+    </script>
+</body>
+</html>
